@@ -1,10 +1,8 @@
 $(document).ready(function() {
     let cart = [];
 
-    // Initialize DataTable
     $('#products-table').DataTable();
 
-    // Function to update the cart display
     function updateCart() {
         let cartItems = '';
         let total = 0;
@@ -28,7 +26,6 @@ $(document).ready(function() {
         $('#cart-count').text(cart.length);
     }
 
-    // Add product to cart
     $('.add-to-cart').on('click', function() {
         const productName = $(this).data('name');
         const productPrice = parseFloat($(this).data('price'));
@@ -38,7 +35,7 @@ $(document).ready(function() {
         let existingProduct = cart.find(item => item.name === productName);
 
         if (existingProduct) {
-            existingProduct.quantity += quantity; // Add input quantity if product is already in cart
+            existingProduct.quantity += quantity; 
         } else {
             cart.push({ name: productName, price: productPrice, quantity: quantity });
         }
@@ -46,35 +43,31 @@ $(document).ready(function() {
         updateCart();
     });
 
-    // Increase quantity in the cart
     $(document).on('click', '.increase-quantity', function() {
         const index = $(this).data('index');
         cart[index].quantity += 1;
         updateCart();
     });
 
-    // Decrease quantity in the cart
     $(document).on('click', '.decrease-quantity', function() {
         const index = $(this).data('index');
         if (cart[index].quantity > 1) {
             cart[index].quantity -= 1;
         } else {
-            cart.splice(index, 1); // Remove item if quantity is zero
+            cart.splice(index, 1); 
         }
         updateCart();
     });
 
-    // Remove product from cart
     $(document).on('click', '.remove-item', function() {
         const index = $(this).data('index');
-        cart.splice(index, 1); // Remove the item at the given index
+        cart.splice(index, 1);
         updateCart();
     });
 
-    // Checkout logic (you can replace this with actual checkout functionality)
     $('#checkout-btn').on('click', function() {
         alert('Proceeding to checkout!');
-        cart = []; // Clear the cart after checkout
+        cart = []; 
         updateCart();
         $('#cartModal').modal('hide');
     });
