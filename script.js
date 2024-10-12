@@ -1,11 +1,13 @@
 $(document).ready(function() {
     let cart = [];
+    let favorites = [];
 
     $('#products-table').DataTable();
 
     function updateCart() {
         let cartItems = '';
         let total = 0;
+        console.log("JALAAAAA")
 
         cart.forEach((item, index) => {
             const itemTotal = item.price * item.quantity;
