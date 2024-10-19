@@ -26,7 +26,37 @@ $(document).ready(function() {
         $('#cart-items').html(cartItems);
         $('#cart-total').text(total.toFixed(2));
         $('#cart-count').text(cart.length);
+
+    const cartUpdatedEvent = new CustomEvent("cartUpdated", {
+        detail: { cart, total }
+    });
+    document.dispatchEvent(cartUpdatedEvent);
     }
+
+
+document.addEventListener("cartUpdated", function(e) {
+    console.log("Custom Event - Cart updated:", e.detail);
+});
+
+$('#checkout-btn').on('click', function() {
+    alert('Proceeding to checkout!');
+    
+
+    const checkoutCompletedEvent = new CustomEvent("checkoutCompleted", {
+        detail: { cart, total: $('#cart-total').text() }
+    });
+    document.dispatchEvent(checkoutCompletedEvent);
+
+    cart = []; 
+    updateCart();
+    $('#cartModal').modal('hide');
+});
+
+
+document.addEventListener("checkoutCompleted", function(e) {
+    console.log("Custom Event - Checkout completed:", e.detail);
+});
+
 
     $('.add-to-cart').on('click', function() {
         const productName = $(this).data('name');
@@ -49,7 +79,19 @@ $(document).ready(function() {
         const index = $(this).data('index');
         cart[index].quantity += 1;
         updateCart();
+    
+        // Trigger custom "quantityIncreased" event
+        const quantityIncreasedEvent = new CustomEvent("quantityIncreased", {
+            detail: { product: cart[index] }
+        });
+        document.dispatchEvent(quantityIncreasedEvent);
     });
+    
+    // Listen for the custom event
+    document.addEventListener("quantityIncreased", function(e) {
+        alert(`Increased quantity for ${e.detail.product.name} to ${e.detail.product.quantity}`);
+    });
+    
 
     $(document).on('click', '.decrease-quantity', function() {
         const index = $(this).data('index');
@@ -67,10 +109,5 @@ $(document).ready(function() {
         updateCart();
     });
 
-    $('#checkout-btn').on('click', function() {
-        alert('Proceeding to checkout!');
-        cart = []; 
-        updateCart();
-        $('#cartModal').modal('hide');
-    });
+
 });
