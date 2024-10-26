@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register/Login</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#"><img src="images/logo.png" alt="Shop Haven"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Deals</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Popular</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">History</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <!-- Login Form -->
+                <div id="login-form" class="card shadow p-4">
+                    <h2 class="text-center text-dark mb-4">Login</h2>
+                    <div id="login-message" class="text-danger mb-3"></div>
+                    <form id="login">
+                        <div class="form-group">
+                            <label for="login-username">Username</label>
+                            <input type="text" class="form-control" id="login-username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <input type="password" class="form-control" id="login-password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Login</button>
+                    </form>
+                    <p class="text-center mt-3">Don't have an account? <a href="#" id="show-register">Register here</a></p>
+                </div>
+
+                <!-- Register Form -->
+                <div id="register-form" class="card shadow p-4" style="display: none;">
+                    <h2 class="text-center text-dark mb-4">Register</h2>
+                    <div id="register-message" class="text-danger mb-3"></div>
+                    <form id="register">
+                        <div class="form-group">
+                            <label for="register-username">Username</label>
+                            <input type="text" class="form-control" id="register-username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-password">Password</label>
+                            <input type="password" class="form-control" id="register-password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-confirm-password">Confirm Password</label>
+                            <input type="password" class="form-control" id="register-confirm-password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Register</button>
+                    </form>
+                    <p class="text-center mt-3">Already have an account? <a href="#" id="show-login">Login here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white pt-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="#"><img width="100px" src="images/logo.png" alt="Shop Haven"></a>
+                </div>
+
+                <div class="col-md-2">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Deals</a></li>
+                        <li><a href="#" class="text-white">Popular</a></li>
+                        <li><a href="#" class="text-white">Cart</a></li>
+                        <li><a href="#" class="text-white">History</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-2">
+                    <h5>Customer Service</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Contact Us</a></li>
+                        <li><a href="#" class="text-white">FAQs</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-2">
+                    <h5>Policies</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-2">
+                    <h5>Follow Us</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="#" class="text-white"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#" class="text-white"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#" class="text-white"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="bg-white">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-left">
+                    <p class="mb-0">© 2024 Shop Haven. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="script3.js"></script>
+</body>
+</html>
