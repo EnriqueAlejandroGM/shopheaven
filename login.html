@@ -37,14 +37,49 @@
     <div id="auth-container" class="card shadow-lg">
         <div class="card-body">
             <!-- Tabs -->
-            <ul class="nav nav-tabs" id="auth-tabs" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" id="register-tab" href="#register">Register</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="login-tab" href="#login">Login</a>
-                </li>
-            </ul>
+            <!-- Tabs -->
+<ul class="nav nav-tabs" id="auth-tabs" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="register-tab" href="#register">Register</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="login-tab" href="#login">Login</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="recover-tab" href="#recover">Forgot Password?</a>
+    </li>
+</ul>
+
+<!-- Password Recovery Form -->
+<div id="recover-form" class="form-content hidden">
+    <h2 class="text-center text-danger">Recover Password</h2>
+    <form>
+        <div id="recover-message" class="text-danger text-center"></div>
+        <div class="form-group">
+            <label for="recover-email">Email</label>
+            <input type="email" id="recover-email" class="form-control" placeholder="Enter your email" required>
+        </div>
+        <button type="button" id="recover-btn" class="btn btn-danger btn-block">Recover Password</button>
+    </form>
+</div>
+
+<!-- New Password Form (after email verification) -->
+<div id="reset-password-form" class="form-content hidden">
+    <h2 class="text-center text-danger">Reset Password</h2>
+    <form>
+        <div id="reset-message" class="text-danger text-center"></div>
+        <div class="form-group">
+            <label for="new-password">New Password</label>
+            <input type="password" id="new-password" class="form-control" placeholder="Enter new password" required>
+        </div>
+        <div class="form-group">
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-password" class="form-control" placeholder="Confirm new password" required>
+        </div>
+        <button type="button" id="reset-password-btn" class="btn btn-danger btn-block">Reset Password</button>
+    </form>
+</div>
+
 
             <div id="form-container" class="mt-4">
                 <!-- Register Form -->
