@@ -111,3 +111,96 @@ document.addEventListener("checkoutCompleted", function(e) {
 
 
 });
+
+// Define global credentials and role
+const globalEmail = "enrique.agm2177@gmail.com";
+const globalPassword = "123";
+const globalRole = "admin"; // Change this to "client" if needed
+
+// Simulate login process (no actual login form, just hardcoded values)
+let loggedInEmail = globalEmail;
+let loggedInPassword = globalPassword;
+let loggedInRole = globalRole; // This will be either "admin" or "client"
+
+// Function to update navigation and content based on role
+function updateUI() {
+    const userNavLink = document.querySelector('a.nav-link[href="login.html"]');
+    const navbarNav = document.querySelector('.navbar-nav');
+    const productsTable = document.getElementById('products-table');
+    const manageProductsSection = document.getElementById('manage-products-section');
+    const cartLink = document.getElementById('cart-link');
+    const footer = document.querySelector('footer');
+    
+    // Clear any previously added admin-specific elements
+    navbarNav.innerHTML = '';
+
+    if (loggedInRole === 'admin') {
+        // Admin Navigation
+        userNavLink.innerHTML = "Admin ▼";
+        navbarNav.insertAdjacentHTML('beforeend', `
+            <li class="nav-item"><a class="nav-link" href="#">Admin Dashboard</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Manage Products</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">User Management</a></li>
+        `);
+
+        // Show admin-specific sections
+        if (manageProductsSection) {
+            manageProductsSection.style.display = 'block';  // Admin can see product management
+        }
+
+        // Show all products for admin (they might want to manage them)
+        if (productsTable) {
+            productsTable.style.display = 'block';
+        }
+
+        // Remove cart link for admin
+        if (cartLink) {
+            cartLink.style.display = 'none';
+        }
+
+        // Show admin footer information
+        if (footer) {
+            footer.innerHTML = `
+                <div class="container text-center">
+                    <p>Admin Tools: Product and User Management</p>
+                </div>
+            `;
+        }
+    } else {
+        // Client Navigation
+        userNavLink.innerHTML = "User ▼";
+        navbarNav.insertAdjacentHTML('beforeend', `
+            <li class="nav-item"><a class="nav-link" href="#">My Orders</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
+        `);
+
+        // Hide admin-specific sections for client
+        if (manageProductsSection) {
+            manageProductsSection.style.display = 'none';
+        }
+
+        // Only show the products and cart for the client
+        if (productsTable) {
+            productsTable.style.display = 'block';
+        }
+
+        // Show cart link for clients
+        if (cartLink) {
+            cartLink.style.display = 'block';
+        }
+
+        // Show footer for clients
+        if (footer) {
+            footer.innerHTML = `
+                <div class="container text-center">
+                    <p>Shop Haven: Enjoy Shopping and Explore New Deals!</p>
+                </div>
+            `;
+        }
+    }
+}
+
+// Run this function on page load to update the UI
+window.onload = function() {
+    updateUI();
+};
